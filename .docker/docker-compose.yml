@@ -22,8 +22,11 @@ services:
         links:
             - 'db'
         container_name: ci4-web
+        command: sh -c "cd app/ && composer install && php spark migrate && cd / && service apache2 restart && tail -F /dev/null"
+        tty: true
     adminer:
-        image: adminer
+        build:
+            context: ./adminer
         restart: unless-stopped
         ports:
             - 8080:8080

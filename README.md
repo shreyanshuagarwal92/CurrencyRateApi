@@ -11,7 +11,26 @@ The purpose of this porject is to provide EUR exchange rates for following condi
 - As a client, I want to get the EUR-FX exchange rate at particular day, if not present pull from external API, save it and return it.
 - As a client, I want to get a foreign exchange amount for a given currency converted to EUR on a particular day, if not present pull from external API, save it and return it.
 
+## Important files and folder
+
+    .
+    ├── app                                     # Codeigniter Application
+    │   ├── app
+    |   |   ├── Config/Routes.php               # Contain routes for API
+    |   |   ├── Controllers/CurrencyRate.php    # Controller for API
+    |   |   ├── Database/Migrations             # Migrations run on start up of application
+    |   |   ├── Libraries/CurrencyApi.php       # Library to fetch currency rates from external API
+    |   |   ├── Models/CurrencyRateModel.php    # Model to save and fetch Currency rates in MySQL DB
+    │   ├── tests                               # Contains Unit tests
+    │   └── public                              # Public directory containing index.php
+    ├── .docker                                 # Contains files for docker to run the applications
+    ├── LICENSE
+    └── README.md
+    └── .gitignore
+
 ## API Reference
+
+Api will be running on `https://localhost`
 
 #### Get all currencies
 
@@ -62,10 +81,10 @@ Clone the project
   git clone https://github.com/shreyanshuagarwal92/CurrencyRateApi
 ```
 
-Go to the project directory
+Go to the docker directory in project directory
 
 ```bash
-  cd CurrencyRateApi
+  cd CurrencyRateApi/.docker
 ```
 
 Build project
@@ -80,12 +99,10 @@ Start the server
   docker-compose up -d
 ```
 
-Run Migration script
+Stop the server
 
 ```bash
-  docker-compose exec ci4-web bash
-  cd app
-  php spark migrate
+  docker-compose down --rmi all -v --remove-orphans
 ```
 
 ## Running Tests

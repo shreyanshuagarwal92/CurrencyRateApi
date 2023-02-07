@@ -22,9 +22,7 @@ RUN docker-php-ext-install \
     opcache \
     calendar \
     pdo_mysql \
-    mysqli \
-    mbstring \
-    json
+    mysqli  
 
 COPY sites-available/ci4.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
