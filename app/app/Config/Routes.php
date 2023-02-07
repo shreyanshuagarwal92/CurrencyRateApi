@@ -30,6 +30,12 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('currencies', 'CurrencyRate::index');
+$routes->get('currencyRates', 'CurrencyRate::getCurrencyRateAllDates');
+$routes->get('currencyRates/(([0-9]){4}-([0-9]){2}-([0-9]){2}$)', 'CurrencyRate::getCurrencyRateOneDate/$1');
+$routes->get('currencyRates/code/(([A-Z]){3}$)', 'CurrencyRate::getCurrencyRateByCode/$1');
+$routes->get('currencyRates/code/([A-Z]{3})/([0-9]{4}-[0-9]{2}-[0-9]{2}$)', 'CurrencyRate::getCurrencyRateByCodeAndDate/$1/$2');
+
 
 /*
  * --------------------------------------------------------------------
