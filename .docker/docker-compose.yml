@@ -1,0 +1,29 @@
+version: '3'
+services:
+    db:
+        container_name: ci4-database
+        build:
+            context: ./mysql
+        volumes:
+            - ./db:/var/lib/mysql
+        ports:
+            - 3306:3306
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: currency_password
+            MYSQL_DATABASE: currency_db
+    ci4-web:
+        build:
+            context: ./php
+        ports:
+            - 80:80
+        volumes:
+            - ../app:/var/www/html/app/
+        links:
+            - 'db'
+        container_name: ci4-web
+    adminer:
+        image: adminer
+        restart: unless-stopped
+        ports:
+            - 8080:8080

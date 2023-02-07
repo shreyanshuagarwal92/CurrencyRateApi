@@ -102,3 +102,4 @@ app/results/
 app//phpunit*.xml
 /.phpunit.*.cache
 
+.docker/db/*
