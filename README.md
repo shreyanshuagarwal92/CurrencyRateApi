@@ -59,13 +59,13 @@ The purpose of this porject is to provide EUR exchange rates for following condi
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/shreyanshuagarwal92/CurrencyRateApi
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd CurrencyRateApi
 ```
 
 Build project
